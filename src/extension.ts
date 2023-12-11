@@ -52,7 +52,27 @@ export function activate(context: vscode.ExtensionContext) {
 			oldIndex = index
 		}));
 
+		let volumeUp = vscode.commands.registerCommand('indent-reporter.volume-up', () => {
+			config.macVol += 1;
+			config.winVol += 1;
+			config.linuxVol += 1;
+		});
+		context.subscriptions.push(volumeUp);
+
+		let volumeDown = vscode.commands.registerCommand('indent-reporter.volume-down', () => {
+			if (config.macVol > 0) {
+				config.macVol -= 1;
+			}
+			if (config.linuxVol > 0) {
+				config.linuxVol -= 1;
+			}
+			if (config.winVol > 0) {
+				config.winVol -= 1;
+			}
+		});
+		context.subscriptions.push(volumeDown);
 }
+
 function reportIndex(index: Number, basePath: string) {
 	//vscode.window.showInformationMessage("reported")
 	console.debug("playing " + basePath+"/"+index+".mp3")

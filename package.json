@@ -24,6 +24,30 @@
     "activationEvents": [
         "*"
     ],
+    "contributes": {
+		"commands": [
+			{
+				"command": "indent-reporter.volume-up",
+				"title": "Increase volume"
+			},
+			{
+				"command": "indent-reporter.volume-down",
+				"title": "Decrease volume"
+			}
+        ]
+    },
+    "keybindings": [
+        {
+            "command": "indent-reporter.volume-up",
+            "key": "ctrl+shift+alt+up",
+            "when": "editorTextFocus"
+        },
+        {
+            "command": "indent-reporter.volume-down",
+            "key": "ctrl+shift+alt+down",
+            "when": "editorTextFocus"
+        }
+    ],
     "main": "./out/extension.js",
     "scripts": {
         "vscode:prepublish": "npm run compile",
